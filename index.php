@@ -45,14 +45,67 @@ die();
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
+      @font-face {
+    font-family: 'Signika';
+    src: url('Signika-Regular.eot');
+    src: local('Signika Regular'), local('Signika-Regular'),
+        url('Signika-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Signika-Regular.woff2') format('woff2'),
+        url('Signika-Regular.woff') format('woff'),
+        url('Signika-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('Signika-Bold.eot');
+    src: local('Signika Bold'), local('Signika-Bold'),
+        url('Signika-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Signika-Bold.woff2') format('woff2'),
+        url('Signika-Bold.woff') format('woff'),
+        url('Signika-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('Signika-Light.eot');
+    src: local('Signika Light'), local('Signika-Light'),
+        url('Signika-Light.eot?#iefix') format('embedded-opentype'),
+        url('Signika-Light.woff2') format('woff2'),
+        url('Signika-Light.woff') format('woff'),
+        url('Signika-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('Signika-SemiBold.eot');
+    src: local('Signika SemiBold'), local('Signika-SemiBold'),
+        url('Signika-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Signika-SemiBold.woff2') format('woff2'),
+        url('Signika-SemiBold.woff') format('woff'),
+        url('Signika-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
       html, body {
       min-height: 100%;
+      background-color: #BE2738;
+      /* background: url('images/beta-bg.png');
+      background-repeat: no-repeat;
+      background-size: cover; */
       }
       body, div, form, input, select, textarea, p { 
       padding: 0;
       margin: 0;
       outline: none;
-      font-family: Roboto, Arial, sans-serif;
+      font-family: 'Signika';
       font-size: 14px;
       color: #666;
       line-height: 22px;
@@ -70,23 +123,32 @@ die();
       align-items: center;
       height: inherit;
       padding: 20px;
+      width: 80%;
+      margin: auto;
       }
       form {
       width: 100%;
       padding: 20px;
       border-radius: 6px;
-      background: #fff;
-      box-shadow: 0 0 25px 0 #892e9b; 
+      background: #ffffff2e;
       }
-      .banner {
-      position: relative;
-      height: 210px;
-      background-image: url("/uploads/media/default/0001/01/b42dddca6e6a31b300c6ce26cb9dcac565b2f869.jpeg");  
-      background-size: cover;
+      .beta-wrapper {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      margin: auto;
+      width: 80%;
+      }
+      .beta-wrapper h2{
+        font-size: 48px;
+        color: #fff;
+        margin-top: 120px;
+      }
+      .beta-wrapper p{
+        font-size: 24px;
+        color: #fff;
+        line-height: 120%;
       }
       .banner::after {
       content: "";
@@ -99,6 +161,7 @@ die();
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 3px;
+      height: 40px;
       }
       input {
       width: calc(100% - 10px);
@@ -115,9 +178,16 @@ die();
       textarea {
       width: calc(100% - 12px);
       padding: 5px;
+      height: 300px;
+      border: 2px solid #be2738;
+      border-radius: 15px;
       }
-      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+     .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
       color: #892e9b;
+      }
+      .item p{
+        font-size: 18px;
+        color: #fff;
       }
       .item input:hover, .item select:hover, .item textarea:hover {
       border: 1px solid transparent;
@@ -192,11 +262,11 @@ die();
       text-align: center;
       }
       button {
-      width: 150px;
+      width: 250px;
       padding: 10px;
       border: none;
       border-radius: 5px; 
-      background: #892e9b;
+      background: #be2738;
       font-size: 16px;
       color: #fff;
       cursor: pointer;
@@ -211,47 +281,106 @@ die();
       justify-content: space-between;
       }
       .name-item input, .city-item input {
-      width: calc(50% - 20px);
+      height: 35px;
       }
       .city-item select {
-      width: calc(50% - 8px);
+      height: 35px;
+      }
+      .tab {
+      overflow: hidden;
+      }
+      .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border-top: none;
       }
       }
     </style>
   </head>
   <body>
+    <div class="beta-wrapper">
+      <h2>Beta Goals</h2>
+      <p style="padding-bottom: 15px;">Feeling like you’ve wasted a lot of time without achieving any particular goal set? Beta goals will keep you updated by sending reminders of set goals by tweet or email.</p>
+      <p style="padding-bottom: 40px;">Become #theBetaAchiever you’ve always wanted to be!</p>
+    </div>
     <div class="testbox">
       <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-        <div class="banner">
-          <h1>Beta Malt Goals Prototype</h1>
+      <div class="item">
+          <p style="padding-bottom: 15px;">Set a goal here!</p>
+          <textarea rows="3" name="goal"></textarea>
         </div>
-        <div class="item">
-          <p>Name</p>
-          <div class="name-item">
-            <input type="text" name="name" placeholder="First" />
-            <!-- <input type="text" name="name" placeholder="Last" /> -->
-          </div>
-        </div>
-        <div class="item">
-          <p>Twitter handle</p>
-          <div class="name-item">
-            <input type="text" name="handle" placeholder="First" />
-            <!-- <input type="text" name="name" placeholder="Last" /> -->
-          </div>
-        </div>
-        <div class="item">
-          <p>Select Reminder Date</p>
+        <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')">Remind me via Twitter</button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')">Remind me via other channel</button>
+      </div>
+      <div id="London" class="tabcontent">
+      <div class="item">
+          <p>Choose a Reminder Date</p>
           <input type="date" name="rdate" required/>
           <i class="fas fa-calendar-alt"></i>
         </div>
         <div class="item">
-          <p>Your Goal</p>
-          <textarea rows="3" name="goal"></textarea>
+          <p>Your Name</p>
+          <div class="name-item">
+            <input type="text" name="name" />
+            <!-- <input type="text" name="name" placeholder="Last" /> -->
+          </div>
+        </div>
+        <div class="item">
+          <p>Your Twitter handle</p>
+          <div class="name-item">
+            <input type="text" name="handle" />
+            <!-- <input type="text" name="name" placeholder="Last" /> -->
+          </div>
+        </div>
+        </div>
+        <div id="Paris" class="tabcontent">
+      <div class="item">
+          <p>Choose a Reminder Date</p>
+          <input type="date" name="rdate" required/>
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="item">
+          <p>Your Name</p>
+          <div class="name-item">
+            <input type="text" name="name" />
+            <!-- <input type="text" name="name" placeholder="Last" /> -->
+          </div>
+        </div>
+        <div class="item">
+          <p>Your instagram handle</p>
+          <div class="name-item">
+            <input type="text" name="handle" />
+            <!-- <input type="text" name="name" placeholder="Last" /> -->
+          </div>
+        </div>
         </div>
         <div class="btn-block">
-          <button type="submit" name="submit" value="submit">Submit</button>
+          <button type="submit" name="submit" value="submit">Remind me of this goal!</button>
         </div>
       </form>
     </div>
   </body>
+  <script>
+    function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+  </script>
 </html>
